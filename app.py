@@ -5,7 +5,7 @@ from lifelines import KaplanMeierFitter
 kmf = KaplanMeierFitter()
 
 measures = ['None','Gender','Glucose','Biological Age']
-measure = st.selectbox('Measure', measures)
+measure = st.selectbox('Category', measures)
 
 df=pd.read_csv('2010.csv',index_col=0)
 T=df.PERMTH_EXM
@@ -32,16 +32,16 @@ if measure=='Gender':
         kmf.fit(T[~ix], E[~ix], label='Female')
         v2 =kmf.survival_function_
         v1.columns=['Survival']
-        v1['c']='Male'
+        v1['Category']='Male'
         v2.columns=['Survival']
-        v2['c']='Female'
+        v2['Category']='Female'
         val=pd.concat([v2,v1])
         val['Time (months)']=val.index
         fig = px.line(
             val,
             x="Time (months)",
             y="Survival",
-            color='c',
+            color='Category',
             hover_name="Survival",
         )  
         st.plotly_chart(fig, theme="streamlit", use_container_width=True)
