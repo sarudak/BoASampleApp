@@ -49,13 +49,12 @@ def update_fig(measure):
                 val['Time (months)']=val.index                
         return val
 
-with measure:
-        val=update_fig(measure)
-        fig = px.line(
-            val,
-            x="Time (months)",
-            y="Survival",
-            #color="RIAGENDR",
-            hover_name="Survival",
-        )
-        st.plotly_chart(fig, theme="streamlit", use_container_width=True)
+val=update_fig(measure)
+fig = px.line(
+    val,
+    x="Time (months)",
+    y="Survival",
+    #color="RIAGENDR",
+    hover_name="Survival",
+)
+st.plotly_chart(fig, theme="streamlit", use_container_width=True)
