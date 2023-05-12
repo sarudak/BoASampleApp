@@ -49,7 +49,7 @@ def update_fig(measure):
                 val['Time (months)']=val.index                
         return val
 
-with measure:
+with st.selectbox('Category', measures):
         val=update_fig(measure)
         fig = px.line(
             val,
