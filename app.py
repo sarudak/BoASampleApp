@@ -5,22 +5,22 @@ from lifelines import KaplanMeierFitter
 kmf = KaplanMeierFitter()
 
 measures = ['None','Gender','Glucose','Biological Age']
-option = st.selectbox('Measure',measures)
+measure = st.selectbox('Measure', measures)
 
 df=pd.read_csv('2010.csv',index_col=0)
 T=df.PERMTH_EXM
 E=df.MORTSTAT
-kmf.fit(T, E)  
-val=kmf.survival_function_
-val.columns=['Survival']
-val['Time (months)']=val.index  
-        
-fig = px.line(
-    val,
-    x="Time (months)",
-    y="Survival",
-    #color="RIAGENDR",
-    hover_name="Survival",
-)
+if measure='None':
+        kmf.fit(T, E)  
+        val=kmf.survival_function_
+        val.columns=['Survival']
+        val['Time (months)']=val.index  
+        fig = px.line(
+            val,
+            x="Time (months)",
+            y="Survival",
+            #color="RIAGENDR",
+            hover_name="Survival",
+        )
 
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
