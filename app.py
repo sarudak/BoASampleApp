@@ -50,7 +50,7 @@ if measure=='Gender':
         st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 if measure=='Blood glucose':
         col='LBDGLUSI'        
-        groups = df[cold]
+        groups = df[col]
         ix = (groups <5.5)
         kmf.fit(T[ix], E[ix], label='Low Glucose')
         v1 =kmf.survival_function_
