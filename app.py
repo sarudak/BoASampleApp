@@ -4,7 +4,8 @@ import pandas as pd
 from lifelines import KaplanMeierFitter
 kmf = KaplanMeierFitter()
 
-available_indicators = ['RIDAGEYR','RIAGENDR','LBDGLUSI','Biological Age']
+measures = ['RIDAGEYR','RIAGENDR','LBDGLUSI','Biological Age']
+option = st.selectbox('Measure',measures)
 
 df=pd.read_csv('2010.csv',index_col=0)
 T=df.PERMTH_EXM
