@@ -7,17 +7,12 @@ T=df.PERMTH_EXM
 E=df.MORTSTAT
 available_indicators = ['RIDAGEYR','RIAGENDR','LBDGLUSI','Biological Age']
 
-df = px.data.gapminder()
-
 fig = px.scatter(
-    df.query("year==2007"),
-    x="gdpPercap",
-    y="lifeExp",
-    size="pop",
-    color="continent",
-    hover_name="country",
-    log_x=True,
-    size_max=60,
+    df
+    x="RIDAGEYR",
+    y="Biological Age",
+    color="RIAGENDR",
+    hover_name="Biological Age",
 )
 
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
