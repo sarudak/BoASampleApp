@@ -57,9 +57,9 @@ if measure=='Blood glucose':
         kmf.fit(T[~ix], E[~ix], label='High Glucose')
         v2 =kmf.survival_function_
         v1.columns=['Survival']
-        v1['c']='Low Glucose'
+        v1['Category']='Low Glucose'
         v2.columns=['Survival']
-        v2['c']='High Glucose'
+        v2['Category']='High Glucose'
         val=pd.concat([v1,v2])
         val['Time (months)']=val.index
         fig = px.line(
