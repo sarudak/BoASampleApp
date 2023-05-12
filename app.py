@@ -48,7 +48,7 @@ def update_fig(measure):
                 v2['Category']='High Glucose'
                 val=pd.concat([v1,v2])
                 val['Time (months)']=val.index 
-        if measure='Biological Age':
+        if measure=='Biological Age':
                 groups = df[measure]
                 ix = (groups ==0)
                 kmf.fit(T[ix], E[ix], label='Biologically younger')
