@@ -8,7 +8,7 @@ E=df.MORTSTAT
 available_indicators = ['RIDAGEYR','RIAGENDR','LBDGLUSI','Biological Age']
 
 fig = px.scatter(
-    df
+    df,
     x="RIDAGEYR",
     y="Biological Age",
     color="RIAGENDR",
