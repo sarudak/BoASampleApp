@@ -50,7 +50,7 @@ def update_fig(measure):
                 val['Time (months)']=val.index                
         return val
 
-val,cat=update_fig(measure)
+val=update_fig(measure)
 fig = px.line(
     val,
     x="Time (months)",
