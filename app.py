@@ -23,7 +23,3 @@ fig = px.line(
 )
 
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
-
-      
-        fig = px.line(val, 
-            x='Time (months)', y="Survival")
