@@ -1,5 +1,6 @@
 import plotly.express as px
 import streamlit as st
+import pandas as pd
 
 df=pd.read_csv('2010.csv',index_col=0)
 T=df.PERMTH_EXM
