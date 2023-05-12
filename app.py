@@ -7,7 +7,7 @@ kmf = KaplanMeierFitter()
 datasets = ['National Health and Nutrition Examination Survey','Framingham Heart Study','UK Biobank','Mass General Biobank']
 dataset = st.selectbox('Dataset', datasets, disabled=True)
 
-measures = ['None','Gender','Glucose','Biological Age']
+measures = ['None','Gender','Blood glucose','Biological Age']
 measure = st.selectbox('Category', measures)
 
 df=pd.read_csv('2010.csv',index_col=0)
@@ -48,4 +48,25 @@ if measure=='Gender':
             hover_name="Survival",
         )  
         st.plotly_chart(fig, theme="streamlit", use_container_width=True)
-        
+if measure=='Blood glucose':
+        col='LBDGLUSI'        
+        groups = df[cold]
+        ix = (groups <5.5)
+        kmf.fit(T[ix], E[ix], label='Low Glucose')
+        v1 =kmf.survival_function_
+        kmf.fit(T[~ix], E[~ix], label='High Glucose')
+        v2 =kmf.survival_function_
+        v1.columns=['Survival']
+        v1['c']='Low Glucose'
+        v2.columns=['Survival']
+        v2['c']='High Glucose'
+        val=pd.concat([v1,v2])
+        val['Time (months)']=val.index
+        fig = px.line(
+            val,
+            x="Time (months)",
+            y="Survival",
+            color='Category',
+            hover_name="Survival",
+        )  
+        st.plotly_chart(fig, theme="streamlit", use_container_width=True)
