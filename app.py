@@ -24,7 +24,7 @@ if measure=='None':
         )
         st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 if measure=='Gender':
-        col=RIAGENDR
+        col='RIAGENDR'
         groups = df[col]
         ix = (groups == 1)
         kmf.fit(T[ix], E[ix], label='Male')
