@@ -43,4 +43,6 @@ if measure=='Gender':
             y="Survival",
             color='c',
             hover_name="Survival",
-        )        
+        )  
+        st.plotly_chart(fig, theme="streamlit", use_container_width=True)
+        
