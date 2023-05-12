@@ -41,6 +41,6 @@ if measure=='Gender':
             val,
             x="Time (months)",
             y="Survival",
-            color=col,
+            color='c',
             hover_name="Survival",
         )        
