@@ -19,6 +19,7 @@ def update_fig(measure):
                 val=kmf.survival_function_
                 val.columns=['Survival']
                 val['Time (months)']=val.index
+                va;['Category']=1
         if measure=='Gender':
                 col='RIAGENDR'
                 groups = df[col]
@@ -49,12 +50,12 @@ def update_fig(measure):
                 val['Time (months)']=val.index                
         return val
 
-val=update_fig(measure)
+val,cat=update_fig(measure)
 fig = px.line(
     val,
     x="Time (months)",
     y="Survival",
-    #color="RIAGENDR",
+    color='Category',
     hover_name="Survival",
 )
 st.plotly_chart(fig, theme="streamlit", use_container_width=True)
