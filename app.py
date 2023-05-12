@@ -5,7 +5,7 @@ from lifelines import KaplanMeierFitter
 kmf = KaplanMeierFitter()
 
 datasets = ['National Health and Nutrition Examination Survey','Framingham Heart Study','UK Biobank','Mass General Biobank']
-dataset = st.selectbox('Dataset', datasets)
+dataset = st.selectbox('Dataset', datasets, disabled=True)
 
 measures = ['None','Gender','Glucose','Biological Age']
 measure = st.selectbox('Category', measures)
