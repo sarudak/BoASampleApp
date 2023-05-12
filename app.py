@@ -48,9 +48,9 @@ def update_fig(measure):
                 val=pd.concat([v1,v2])
                 val['Time (months)']=val.index                
         return val
-val= update_fig(measure)
+
 fig = px.line(
-    val,
+    update_fig(measure),
     x="Time (months)",
     y="Survival",
     #color="RIAGENDR",
