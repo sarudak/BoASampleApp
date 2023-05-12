@@ -7,7 +7,7 @@ T=df.PERMTH_EXM
 E=df.MORTSTAT
 available_indicators = ['RIDAGEYR','RIAGENDR','LBDGLUSI','Biological Age']
 
-fig = px.scatter(
+fig = px.line(
     df,
     x="RIDAGEYR",
     y="Biological Age",
