@@ -19,7 +19,7 @@ def update_fig(measure):
                 val=kmf.survival_function_
                 val.columns=['Survival']
                 val['Time (months)']=val.index
-                val['Category']=1
+                val['Category']='None'
         if measure=='Gender':
                 col='RIAGENDR'
                 groups = df[col]
@@ -46,6 +46,19 @@ def update_fig(measure):
                 v1['Category']='Low Glucose'
                 v2.columns=['Survival']
                 v2['Category']='High Glucose'
+                val=pd.concat([v1,v2])
+                val['Time (months)']=val.index 
+        if measure='Biological Age':
+                groups = df[measure]
+                ix = (groups ==0)
+                kmf.fit(T[ix], E[ix], label='Biologically younger')
+                v1 =kmf.survival_function_
+                kmf.fit(T[~ix], E[~ix], label='Biologically older')
+                v2 =kmf.survival_function_
+                v1.columns=['Survival']
+                v1['Category']='Biologically younger'
+                v2.columns=['Survival']
+                v2['Category']='Biologically older'
                 val=pd.concat([v1,v2])
                 val['Time (months)']=val.index                
         return val
