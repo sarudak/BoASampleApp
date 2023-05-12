@@ -19,7 +19,7 @@ def update_fig(measure):
                 val=kmf.survival_function_
                 val.columns=['Survival']
                 val['Time (months)']=val.index
-                va;['Category']=1
+                val['Category']=1
         if measure=='Gender':
                 col='RIAGENDR'
                 groups = df[col]
