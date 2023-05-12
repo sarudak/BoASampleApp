@@ -10,7 +10,7 @@ measure = st.selectbox('Measure', measures)
 df=pd.read_csv('2010.csv',index_col=0)
 T=df.PERMTH_EXM
 E=df.MORTSTAT
-if measure='None':
+if measure=='None':
         kmf.fit(T, E)  
         val=kmf.survival_function_
         val.columns=['Survival']
